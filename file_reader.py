@@ -15,4 +15,6 @@ class FileReader:
         img_array = np.array(img)
         print(f"Shape of the image array: {img_array.shape}")
         print(img_array)
+        normlaized_img_array  = img_array / 255.0
+        print(normlaized_img_array)
         return img_array
