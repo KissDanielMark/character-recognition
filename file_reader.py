@@ -4,13 +4,36 @@ import numpy as np
 
 class FileReader:
     def __init__(self):
-        self.subdirectories = [f.path for f in os.scandir(os.getcwd()) if f.is_dir()]
+        self.subdirectories = self._read_subdirectories(os.getcwd())
+        self.files = []
+
+    def _read_subdirectories(self, utvonal):
+        return [f.path for f in os.scandir(utvonal) if f.is_dir()]
 
     def show(self):
         # Print the list of subdirectories
-        for subdir in self.subdirectories:
+        '''for subdir in self.subdirectories:
             print(subdir)
-    def image_to_array(self, image_path):
+        '''
+        for file in self.files:
+            print(file)
+        print(len(self.files))
+    
+    def _list_files_recursively(self, directory):
+        file_list = []
+
+        for root, directories, files in os.walk(directory):
+            for filename in files:
+                file_list.append(os.path.join(root, filename))
+        self.files.extend(file_list)
+
+    def read_all_files(self):
+        for subdir in self.subdirectories:
+            #print(subdir)
+            if 'Train2' in subdir or'Train1' in subdir:
+                self._list_files_recursively(subdir)
+
+    def _image_to_array(self, image_path):
         img = Image.open(image_path)
         img_array = np.array(img)
         print(f"Shape of the image array: {img_array.shape}")
