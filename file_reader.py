@@ -1,12 +1,14 @@
 import os
 from PIL import Image
 import numpy as np
+from labeler import Labeler
 
 class FileReader:
     """Class for reading the train set"""
     def __init__(self):
         self.subdirectories = self._read_subdirectories(os.getcwd())
         self.files = []
+        self.labels= Labeler()
 
     def _read_subdirectories(self, utvonal):
         return [f.path for f in os.scandir(utvonal) if f.is_dir()]
@@ -44,6 +46,9 @@ class FileReader:
     def _image_to_array(self, image_path):
         """Convertig img to numpy array and normalazing it with divison"""
         img = Image.open(image_path)
+        filename = img.filename[-16:]
+        print(filename[:6])
+        print("\tlabel for IMG:", self.labels.values[filename[:6]])
         img_array = np.array(img)
         normlaized_img_array  = img_array / 255.0
         #print(normlaized_img_array)
