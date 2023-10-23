@@ -9,6 +9,7 @@ class FileReader:
         self.subdirectories = self._read_subdirectories(os.getcwd())
         self.files = []
         self.labels= Labeler()
+        self.train_set = []
 
     def _read_subdirectories(self, utvonal):
         return [f.path for f in os.scandir(utvonal) if f.is_dir()]
@@ -20,7 +21,9 @@ class FileReader:
         
         for file in self.files:
             #print(file)'''
-        print(len(self.files))
+        #print(len(self.files))
+        print(len(self.train_set))
+        print(self.train_set[0])
         return
     
     def _list_files_recursively(self, directory):
@@ -38,18 +41,19 @@ class FileReader:
             if ('Train2' in subdir) or ('Train1' in subdir):
                 self._list_files_recursively(subdir)
 
-    def convert_all_to_array(self):
+    def create_train_set(self):
         """At first the images are read and then converted to Array format"""
         for image in self.files:
-            self._image_to_array(image)
+            self.train_set.append(self._process_image(image))
 
-    def _image_to_array(self, image_path):
+    def _process_image(self, image_path):
         """Convertig img to numpy array and normalazing it with divison"""
         img = Image.open(image_path)
         filename = img.filename[-16:]
-        print(filename[:6])
-        print("\tlabel for IMG:", self.labels.values[filename[:6]])
+        #print(filename[:6])
+        label = self.labels.values[filename[:6]]
+        #print("\tlabel for IMG:", label)
         img_array = np.array(img)
         normlaized_img_array  = img_array / 255.0
-        #print(normlaized_img_array)
-        return img_array
+        ready_img = (normlaized_img_array, label)
+        return ready_img
