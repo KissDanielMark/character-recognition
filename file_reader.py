@@ -3,6 +3,7 @@ from PIL import Image
 import numpy as np
 
 class FileReader:
+    """Class for reading the train set"""
     def __init__(self):
         self.subdirectories = self._read_subdirectories(os.getcwd())
         self.files = []
@@ -18,30 +19,32 @@ class FileReader:
         for file in self.files:
             #print(file)'''
         print(len(self.files))
+        return
     
     def _list_files_recursively(self, directory):
-        file_list = []
-
+        """Recursively reading and then adding the read files to an arary"""
+        current_file_list = []
         for root, directories, files in os.walk(directory):
             for filename in files:
-                file_list.append(os.path.join(root, filename))
-        self.files.extend(file_list)
+                current_file_list.append(os.path.join(root, filename))
+        self.files.extend(current_file_list)
+
 
     def read_all_files(self):
+        """Reads all available files from the directory only from Train1 and Train2 called directories"""
         for subdir in self.subdirectories:
-            #print(subdir)
             if ('Train2' in subdir) or ('Train1' in subdir):
                 self._list_files_recursively(subdir)
 
     def convert_all_to_array(self):
+        """At first the images are read and then converted to Array format"""
         for image in self.files:
             self._image_to_array(image)
 
     def _image_to_array(self, image_path):
+        """Convertig img to numpy array and normalazing it with divison"""
         img = Image.open(image_path)
         img_array = np.array(img)
-        #print(f"Shape of the image array: {img_array.shape}")
-        #print(img_array)
         normlaized_img_array  = img_array / 255.0
         #print(normlaized_img_array)
         return img_array
