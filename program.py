@@ -6,9 +6,12 @@ def program():
     reader = FileReader()
     reader.read_all_files()
     reader.create_train_set()
-    reader.show()
+    #reader.show()
     cnn = ConvolutionalNeuralNetwork(reader.train_set_imgs, reader.train_set_labels)
     cnn.split()
+    cnn.compile()
+    cnn.train()
+    cnn.evaluate()
 
     #reader._image_to_array('/Users/kissdanielmark/Documents/01.Iskola/MSc/2/MediaAndTextmining/character-recognition/Train1/Sample001/img001-00001.png')    
 program()

@@ -37,17 +37,22 @@ class FileReader:
 
 
     def read_all_files(self):
+        print("Reading files...")
         """Reads all available files from the directory only from Train1 and Train2 called directories"""
         for subdir in self.subdirectories:
             if ('Train2' in subdir) or ('Train1' in subdir):
                 self._list_files_recursively(subdir)
+        print("File reading finished."+str(len(self.files)))
+        return
 
     def create_train_set(self):
         """At first the images are read and then converted to Array format"""
+        print("Preparing train set with transformations...")
         for image in self.files:
             img, lbl = self._process_image(image)
             self.train_set_imgs.append(img)
             self.train_set_labels.append(lbl)
+        print("Preparation finished.")
 
     def _process_image(self, image_path):
         """Convertig img to numpy array and normalazing it with divison"""
