@@ -3,7 +3,7 @@ from cnn import ConvolutionalNeuralNetwork
 
 def program():
     """Core program that shoul be run"""
-    reader = FileReader()
+    reader = FileReader() 
     reader.read_all_files()
     reader.create_train_set()
     #reader.show()
