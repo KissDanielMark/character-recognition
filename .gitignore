@@ -1,6 +1,7 @@
 TestData/
 Train1/
 Train2/
+venv_cpu/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
