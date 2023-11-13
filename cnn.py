@@ -64,7 +64,7 @@ class ConvolutionalNeuralNetwork:
         self.model.fit(
             self.img_train,
             self.label_train,
-            epochs=5,
+            epochs=10,
             batch_size=64,
             validation_split=0.2,
         )
