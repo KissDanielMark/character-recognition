@@ -3,6 +3,7 @@ from sklearn.model_selection import train_test_split
 import tensorflow as tf
 from tensorflow.keras import layers, models
 from tensorflow.keras.datasets import mnist
+from tensorflow.keras.preprocessing.image import ImageDataGenerator
 
 
 class ConvolutionalNeuralNetwork:
@@ -16,6 +17,9 @@ class ConvolutionalNeuralNetwork:
         self.img_test = np.empty([1, 1])
         self.label_train = np.empty([1, 1])
         self.label_test = np.empty([1, 1])
+
+        self.img_val = np.empty([1, 1])
+        self.label_val = np.empty([1, 1])
 
         self.model = models.Sequential(
             [
@@ -31,21 +35,23 @@ class ConvolutionalNeuralNetwork:
         self.model.add(
             layers.Dense(62, activation="softmax")
         )  # 10 classes for digits 0-9
-
         return
 
     def split(self):
         """Splitng the dataset to train and test set"""
         kepek = np.array(self.images)
         tagek = np.array(self.labels)
+
+        # Add channel dimension
+        kepek = np.expand_dims(kepek, axis=-1)
+
         (
             self.img_train,
-            self.img_test,
+            self.img_val,
             self.label_train,
-            self.label_test,
-        ) = train_test_split(kepek, tagek, test_size=0.33, random_state=42)
-        # print(len(self.img_train), len(self.label_train))
-        # print(len(self.img_test), len(self.label_test))
+            self.label_val,
+        ) = train_test_split(kepek, tagek, test_size=0.2, random_state=42)
+
         print("Split completed.")
         return
 
@@ -60,13 +66,26 @@ class ConvolutionalNeuralNetwork:
 
     def train(self):
         """Training the model"""
+        # Apply data augmentation to the training set
+
         print("Train started...")
+
+        datagen = ImageDataGenerator(
+            rotation_range=20,
+            width_shift_range=0.2,
+            height_shift_range=0.2,
+            shear_range=0.2,
+            zoom_range=0.2,
+            horizontal_flip=True,
+            fill_mode="nearest",
+        )
+
+        datagen.fit(self.img_train)
+
         self.model.fit(
-            self.img_train,
-            self.label_train,
+            datagen.flow(self.img_train, self.label_train, batch_size=64),
             epochs=10,
-            batch_size=64,
-            validation_split=0.2,
+            validation_data=(self.img_val, self.label_val),
         )
         print("Train finished...")
         return

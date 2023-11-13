@@ -2,7 +2,7 @@ from file_reader import FileReader
 from cnn import ConvolutionalNeuralNetwork
 
 
-def exportToTXT(reader, cnn):
+def export_to_txt(reader, cnn):
     """Export the output to a text file"""
     output_lines = ["class;TestImage"]
     for test_image, test_name in zip(reader.test_set_imgs, reader.test_set_imgname):
@@ -23,8 +23,7 @@ def program():
     reader = FileReader()
     reader.read_training_files()
     reader.create_train_set()
-    reader.read_test_files()
-    reader.create_test_set()
+
     # reader.show()
     cnn = ConvolutionalNeuralNetwork(reader.train_set_imgs, reader.train_set_labels)
     cnn.split()
@@ -32,8 +31,10 @@ def program():
     cnn.train()
     cnn.evaluate()
 
-    # reader._image_to_array('/Users/kissdanielmark/Documents/01.Iskola/MSc/2/MediaAndTextmining/character-recognition/Train1/Sample001/img001-00001.png')
-    # exportToTXT(reader, cnn)
+    """Test set"""
+    # reader.read_test_files()
+    # reader.create_test_set()
+    # export_to_txt(reader, cnn)
 
 
 program()
