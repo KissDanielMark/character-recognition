@@ -124,6 +124,16 @@ I tried to solve this problem but I could not find the solution for it.
 \chapter{Results and parameter optimization}
 
 In this chapter I will showcase the results of my homework and the parameter optimization that I have done.
+As I already mentioned I tried playing with the GPU execution of the CNN which resulted in a lower accuracy but it gave me a faster execution time. On CPU one epoch calculation took nearly 3 minutes in contrast on GPU it only took 40 sec.
+On the other hand I tried to play with the batch size and the epochs.
 
+For the first run on the CPU it gave me a 87\% accuracy with 5 epochs and 64 batch size. After this I started the transition to GPU.
+On GPU I tried to run the same code with the same parameters but it gave me a 75\% accuracy. I tried to play with the batch size and the epochs.
+The third try I have changed and increased the epoch size from 5 to 10. It resulted an increase in the accuracy to 80\%.
+The fourth try I have changed the epoch size from 10 to 15. It resulted an increase in the accuracy to 81\%.
+The next I tried adding a LearningRateScheduler to the training. It resulted an increase in the accuracy to 83,6\%. I used a logic where if the epoch is smaller than 5 then it uses the normal learning rate and after that using a lr * tf.math.exp(-0.1).
+I also tried using differnt learning rate. Increasing it to 0,002 resulted in a 83,7\% accuracy. Decreasing it to 0,0005 resulted in a 82,1\% accuracy.
+An other bigger leap was when I adjusted the learning rate with treshold to 3 for the epoch and using a lr * tf.math.exp(-0.5) calculation. It resulted in a 84,2\% accuracy.
+Decreasing the batch size to 32 resulted in a 84,7\% accuracy. I also tried increasing the batch size to 128 but it resulted in only a 82,5\% accuracy.
 
 \end{document}

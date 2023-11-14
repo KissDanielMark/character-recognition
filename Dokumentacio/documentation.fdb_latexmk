@@ -1,6 +1,6 @@
 # Fdb version 4
-["pdflatex"] 1699975352 "/Users/kissdanielmark/Documents/01.Iskola/MSc/2/MediaAndTextmining/character-recognition/Dokumentacio/documentation.tex" "documentation.pdf" "documentation" 1699975356 0
-  "/Users/kissdanielmark/Documents/01.Iskola/MSc/2/MediaAndTextmining/character-recognition/Dokumentacio/documentation.tex" 1699975351 7088 94afc75e656de53cb655af6d71647958 ""
+["pdflatex"] 1699985853 "/Users/kissdanielmark/Documents/01.Iskola/MSc/2/MediaAndTextmining/character-recognition/Dokumentacio/documentation.tex" "documentation.pdf" "documentation" 1699985856 0
+  "/Users/kissdanielmark/Documents/01.Iskola/MSc/2/MediaAndTextmining/character-recognition/Dokumentacio/documentation.tex" 1699985854 8636 54c4e460b4883e9bb58b86dc3b066f2d ""
   "/usr/local/texlive/2023/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc" 1136849721 2900 1537cc8184ad1792082cd229ecc269f4 ""
   "/usr/local/texlive/2023/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2023/texmf-dist/fonts/tfm/jknappen/ec/tcrm1000.tfm" 1136768653 1536 e07581a4bb3136ece9eeb4c3ffab8233 ""
@@ -249,9 +249,9 @@
   "/usr/local/texlive/2023/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1695131729 4681924 2c19acd65d59ba67d808d6d74d1273b0 ""
   "/usr/local/texlive/2023/texmf-var/web2c/pdftex/pdflatex.fmt" 1695131809 8183250 a45239d28e72dbadff62b48fda1e9ffa ""
   "/usr/local/texlive/2023/texmf.cnf" 1678822455 577 1b2b1af17af2508fb20dd85783af4050 ""
-  "documentation.aux" 1699975356 7476 58dccf9baa7e9c284fb00e3462fea150 "pdflatex"
-  "documentation.tex" 1699975351 7088 94afc75e656de53cb655af6d71647958 ""
-  "documentation.toc" 1699975356 1245 87b0be531e640b6847f8b4ab7b90ae6f "pdflatex"
+  "documentation.aux" 1699985856 7476 58dccf9baa7e9c284fb00e3462fea150 "pdflatex"
+  "documentation.tex" 1699985854 8636 54c4e460b4883e9bb58b86dc3b066f2d ""
+  "documentation.toc" 1699985856 1245 87b0be531e640b6847f8b4ab7b90ae6f "pdflatex"
   "images/cpuvsgpu.png" 1699711541 550144 9aff4ca635353afaca915841c3406f2c ""
   "preamble.tex" 1680597245 20018 a0894faad26ec4c9bcc59c01417a4e6c ""
   (generated)
