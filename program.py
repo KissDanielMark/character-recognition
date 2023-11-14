@@ -23,8 +23,7 @@ def program():
     reader = FileReader()
     reader.read_training_files()
     reader.create_train_set()
-    reader.read_test_files()
-    reader.create_test_set()
+
     # reader.show()
     cnn = ConvolutionalNeuralNetwork(reader.train_set_imgs, reader.train_set_labels)
     cnn.split()
@@ -33,6 +32,8 @@ def program():
     cnn.evaluate()
 
     # reader._image_to_array('/Users/kissdanielmark/Documents/01.Iskola/MSc/2/MediaAndTextmining/character-recognition/Train1/Sample001/img001-00001.png')
+    # reader.read_test_files()
+    # reader.create_test_set()
     # export_to_txt(reader, cnn)
 
 
