@@ -3,6 +3,7 @@ from sklearn.model_selection import train_test_split
 import tensorflow as tf
 from tensorflow.keras import layers, models
 from tensorflow.keras.datasets import mnist
+from tensorflow.keras.callbacks import LearningRateScheduler
 
 
 class ConvolutionalNeuralNetwork:
@@ -31,8 +32,14 @@ class ConvolutionalNeuralNetwork:
         self.model.add(
             layers.Dense(62, activation="softmax")
         )  # 10 classes for digits 0-9
-
         return
+
+    def scheduler(self, epoch, lr):
+        """Learning rate scheduler"""
+        if epoch < 5:
+            return lr
+        else:
+            return lr * tf.math.exp(-0.1)
 
     def split(self):
         """Splitng the dataset to train and test set"""
@@ -61,12 +68,14 @@ class ConvolutionalNeuralNetwork:
     def train(self):
         """Training the model"""
         print("Train started...")
+        lr_scheduler = LearningRateScheduler(self.scheduler)
         self.model.fit(
             self.img_train,
             self.label_train,
             epochs=15,
             batch_size=64,
             validation_split=0.2,
+            callbacks=[lr_scheduler],
         )
         print("Train finished...")
         return
