@@ -16,329 +16,67 @@
 \tableofcontents
 \pagebreak
 
-\chapter{Introduction}
+\chapter{Task description}
 
-Amazon Web Services (AWS) is a comprehensive cloud computing platform provided by Amazon. It includes a mixture of infrastructure-as-a-service (IaaS), platform-as-a-service (PaaS) and packaged-software-as-a-service (SaaS). It offers a vast array of cloud services, including computing power, storage, databases, machine learning, analytics, and more. AWS allows individuals and organizations to access and utilize computing resources over the internet, without the need to own or maintain physical servers and infrastructure.
-Amazon launched its first web services in 2002 from the internal infrastructure that Amazon.com built to handle its online retail operations. In 2006, it began offering its defining IaaS services. AWS was one of the first companies to introduce a pay-as-you-go cloud computing model that scales to provide users with compute, storage or throughput as needed.
-AWS is separated into different services; each can be configured in different ways based on the user's needs. Users can see configuration options and individual server maps for an AWS service. AWS provides a scalable and flexible environment for businesses to build, deploy, and manage applications and services. It offers a pay-as-you-go pricing model, which means users only pay for the resources they consume, making it cost-effective and efficient for a wide range of use cases. \cite{techtagaws}
+The data set contains small black and white images labelled with character identifier. The task is to recognize the character (0-9, a-z, A-Z) of unknown images in the test set by deep learning classifier without any human activity (human’s help is equivalent to cheating).
+Work out a deep learning classifier model, and train this model by the training dataset! Use cross-validation in order to measure the goodness indicators (accuracy, AUC) of your model! Please pay attention to the parameter optimization! Please investigate the model, the result and describe the details of your solution!
 
-\chapter{Current AWS features and techologies}
+\chapter{Ellaborated work}
+In the chapter I will present the ellaborated work that I have done.
+For my work I have created separate classes and files for the different subtasks of the Homework.
+In every section I will present and explain what the different classses are used for.
+\section{program.py}
 
-Before I started the development of the application I have done a course provided by Amazon. It conatains a 14 module class where they teache the fundamentals of AWS.
-It was roughly 5 weeks for me to finish and complete all laboratory exercises and module closing quiz. Throughout the course I have familiarised myself with the different AWS services and theoretical background. It proved to be a good repetition for my previous knowledge like REST API.
-
-
-\section{Amazon Elastic Compute Cloud (EC2)}
-
-This service provides resizable compute capacity in the cloud, allowing users to run virtual servers, known as "instances," for various computing tasks.
-Key features:
+Program.py is the core of the program. It is the main file that is used to run the program. It is responsible for the following tasks:
 \begin{enumerate}
-  \item Scalability: EC2 instances can be quickly scaled up or down based on demand. This means that users can add or remove instances to match the needs of their applications or workloads.
-  \item Variety of Instance Types: EC2 offers a wide range of instance types optimized for different use cases. These include instances optimized for compute-intensive workloads, memory-intensive tasks, storage-optimized applications, and more.
-  \item Operating System Flexibility: Users can choose from a variety of operating systems, including various Linux distributions, Microsoft Windows, and others, to run on their EC2 instances.
+  \item Initializing the FileReader class
+  \item Running the FileReader class functions
+  \item[--] read\_training\_files()
+  \item[--] create\_train\_set()
+  \item Initializing the ConvolutionalNeuralNetwork class
+  \item Running the ConvolutionalNeuralNetwork class functions
+  \item[--]split()
+  \item[--] compile()
+  \item[--] train()
+  \item[--] evaluate()
+  \item Reading the test files
+  \item Creating the test set
+  \item Exporting results to output.txt file
 \end{enumerate}
-\section{Amazon Simple Storage Service (S3)}
-
-S3 offers scalable object storage for storing and retrieving data. It is commonly used for data backup, hosting static websites, and as a storage backend for applications.
-Amazon S3 is designed to provide durability, availability, and scalability at a low cost.
-Key features:
-\begin{enumerate}
-  \item Object Storage: Amazon S3 stores data as objects, which consist of a file and its associated metadata. Each object is identified by a unique key, making it easy to access and manage.
-  \item Buckets: A bucket is a container for objects stored in Amazon S3. Buckets act as top-level folders or directories for organizing and managing objects. Each bucket has a unique name and is associated with a specific AWS region.
-  \item Durability and Availability: Amazon S3 is designed to provide 99.999999999% (11 9's) durability for objects over a given year. It achieves this by replicating data across multiple Availability Zones within a region, ensuring high availability.
-  \item Scalability: Amazon S3 can scale to accommodate virtually unlimited amounts of data. Users can easily upload, store, and retrieve any amount of data, making it suitable for a wide range of use cases.
-  \item ccess Control: Users can control access to their buckets and objects through AWS Identity and Access Management (IAM) policies, bucket policies, Access Control Lists (ACLs), and signed URLs or cookies.
-  \item Cross-Region Replication: Users can configure Amazon S3 to automatically replicate objects from one bucket to another in a different AWS region. This helps achieve geographic redundancy and compliance with data residency requirements.
-  \item Static Website Hosting: Amazon S3 can be used to host static websites, providing a cost-effective solution for hosting web content.
-\end{enumerate}
-%\begin{itemize}
-%  \item Device tracking
-%  \item Raycast
-%  \item Plane detection
-%  \item Gestures
-%  \item Face tracking
-%\end{itemize}
-
-\section{Amazon RDS (Relational Database Service)}
-
-RDS offers managed database services for various database engines, including MySQL, PostgreSQL, Oracle, and Microsoft SQL Server.
-Key features:
-\begin{enumerate}
-  \item Managed Service: AWS handles the heavy lifting of database administration tasks such as hardware provisioning, database setup, configuration, patch management, and backups. This allows users to focus on application development rather than database management.
-\end{enumerate}
-
-%\begin{figure}[!ht]
-%  \centering
-%  \includegraphics[width=\textwidth]{realitykit.png}
-% \includegraphics[width=150mm, keepaspectratio]{figures/TeXnicCenter.png }
-%  \caption{RealityKit and ARKit usage.}
-%  \label{fig:TexnicCenter}
-%\end{figure}
-
-\section{Amazon DynamoDB}
-
-A fully-managed NoSQL database service that provides high performance and seamless scalability for applications that require low-latency access to data.
-\begin{enumerate}
-  \item NoSQL Database: DynamoDB is a NoSQL database, which means it does not rely on a fixed schema like traditional relational databases. This allows for flexible data modeling, making it well-suited for applications with evolving data structures.
-  \item Managed Service: AWS handles all the operational aspects of DynamoDB, including hardware provisioning, setup, configuration, and maintenance. This frees developers from the burden of database management tasks.
-  \item Scalability: DynamoDB is designed to scale easily, both in terms of read and write throughput. It can handle massive volumes of traffic and automatically scales based on demand. Users can adjust read and write capacity units to accommodate their application's needs.
-\end{enumerate}
-\section{AWS Lambda}
-
-This service allows users to run code without provisioning or managing servers. It executes code in response to specific events, making it a key component of serverless architecture.
-\begin{enumerate}
-  \item Serverless Architecture: Lambda is a serverless computing service, which means developers do not need to manage the underlying servers. Instead, they write code and AWS handles the execution and scaling of that code.
-  \item Event-Driven Model: Lambda functions are triggered by events such as changes to data in an Amazon S3 bucket, updates to a DynamoDB table, or incoming HTTP requests via Amazon API Gateway. This event-driven model allows for real-time responses to changes in the environment.
-  \item Supported Runtimes: AWS Lambda supports multiple programming languages including Node.js, Python, Java, Go, Ruby, .NET Core, and custom runtimes. This flexibility enables developers to use their preferred programming language.
-  \item Pay-per-Use Pricing: With AWS Lambda, users pay only for the compute time consumed by their code. There is no charge when code is not running. This pricing model can lead to cost savings compared to traditional server-based architectures.
-\end{enumerate}
-
-\section{AWS CodeCommit}
-AWS CodeCommit is a fully managed source control service provided by Amazon Web Services (AWS). It is a secure and scalable Git-based repository hosting service designed to help teams collaborate on code development and version control. CodeCommit provides a secure and reliable platform for storing and managing code repositories.
-
-Key features:
-\begin{enumerate}
-  \item Git Repository Hosting: CodeCommit supports the Git version control system, providing a familiar interface for developers to manage their code repositories.
-  \item Secure and Private: CodeCommit repositories are secure by default and can be configured to be private. Access control policies, AWS Identity and Access Management (IAM) permissions, and encryption options ensure the confidentiality and integrity of code.
-  \item Integration with AWS Services: CodeCommit seamlessly integrates with other AWS services, such as AWS CodePipeline, AWS CodeBuild, AWS CodeDeploy, AWS CloudFormation, and more. This enables end-to-end continuous integration and continuous deployment (CI/CD) workflows.
-  \item Version Control: CodeCommit allows multiple developers to collaborate on projects by providing version control capabilities. Developers can create branches, merge code changes, and track commit history.
-\end{enumerate}
-
-
-\chapter{Development}
-
-\section{Overview}
-For the development phase of the project I used AWS's Cloud9 integrated developer environment(IDE) as the main developer platform for the front-end. For testing I used an iPhone 11 with dual camera system.
-I have also version controled the whole development process using git and publishing it on GitHub. Not only the source code can be found there but also the documentation of this project as I have writen it using \LaTeX{}.
-
-\section{APILayer Rest API}
-
-The fundamental part of the application is the data it displays. For retriving the displayed informations I used APILayer's Exchange Rates Data API an open and available for free financial API.  The only problem is that you can only do 250 queries per month in the free version. I used 2 endpoints. The first is '/convert'. With this endpoint, we have any amount conversion from one currency to another. The output of this enpoint is the following JSON.
-
-\begin{lstlisting}[frame=single,float=!ht,caption=JSON from /convert endpoint, label=listing:Bibtex]
-  {
-    "success": true,
-    "query": {
-        "from": "EUR",
-        "to": "HUF",
-        "amount": 1
-    },
-    "info": {
-        "timestamp": 1682930463,
-        "rate": 373.180303
-    },
-    "date": "2023-05-01",
-    "result": 373.180303
-  }
-\end{lstlisting}
-
-The other endpoint used is '/fluctuation'. This endpoint returns the fluctuation data between specified dates. The data can be for all available currencies or for a specific set.
-\begin{lstlisting}[frame=single,float=!ht,caption=JSON from /fluctuation endpoint, label=listing:Bibtex]
-{
-  "base": "EUR",
-  "end_date": "2018-02-26",
-  "fluctuation": true,
-  "rates": {
-    "JPY": {
-      "change": 0.0635,
-      "change_pct": 0.0483,
-      "end_rate": 131.651142,
-      "start_rate": 131.587611
-    },
-    "USD": {
-      "change": 0.0038,
-      "change_pct": 0.3078,
-      "end_rate": 1.232735,
-      "start_rate": 1.228952
-    }
-  },
-  "start_date": "2018-02-25",
-  "success": true
-}
-\end{lstlisting}
-
-\section{SwiftUI}
-
-SwiftUI is Apple's brand new framework for building user interfaces for iOS, tvOS, macOS, and watchOS. Apple introduced SwiftUI in 2019 and the framework has been evolving ever since. Unlike UIKit, SwiftUI is a cross-platform framework. The key difference with UIKit and AppKit is that SwiftUI defines the user interface declaratively, not imperatively. What does that mean?
-
-Using UIKit you create views to build the view hierarchy of your application's user interface. That is not how SwiftUI works. SwiftUI provides developers with an API to declare or describe what the user interface should look like. SwiftUI inspects the declaration or description of the user interface and converts it to your application's user interface. SwiftUI does the heavy lifting for you.
-
-One of the most challenging aspects of user interface development is synchronizing the application's state and its user interface. Every time the application's state changes, the user interface needs to update to reflect the change. During the development phase, this was a challenge that had to be overcome. Despite the fact that I have already used and developed an iOS application with SwiftUI, it was excellent practice to deepen my knowledge of user state management. I used ObservableObjects to solve this problem.
-
-I used a common state management technique, the MVC pattern, to control the data and model. MVC (Model-View-Controller) is a pattern in software design commonly used to implement user interfaces, data, and controlling logic. It emphasizes a separation between the software's business logic and display. This "separation of concerns" provides for a better division of labor and improved maintenance. Sticking to convention, I created a CurrencyController, CurrencyView and a CurrencyModell class. The CurrencyModel class contains the generated 3D models and their associated values. The task of the CurrencyController class is to query the data and update the information displayed on the View. In the CurrencyView class, it deals with the code defining the appearance of the application and the display of the given dataset.
-
-
-\section{ARKit and RealityKit}
-
-To operate augmented reality and display the 3D generated graph, I used the ARKit and RealityKit frameworks provided by Apple.
-
-The CurrencyARViewContainer is responsible for displaying the AR view.
-
-\begin{lstlisting}
-struct CurrencyARViewContainer: UIViewRepresentable {
-    
-    @StateObject var controler:CurrencyController
-    
-    func makeUIView(context: Context) -> ARView{
-        AR.view = ARView(frame: .zero)
-        return AR.view
-    }
-    
-    func updateUIView(_ uiView: ARView, context: Context) {
-        print("updating view - \(controler.timerHappened)")
-        uiView.scene.anchors.removeAll()
-        ...
-    }
-}
-\end{lstlisting}
-
-To generate the texts and columns, I used the .generateBox() and .generateText() functions of the built-in MeshResource class.
-The MeshResource class stores the points defining the shapes. In order for this to become a 3D model, a texture must also be specified. I used the SimpleMaterial() function for this.
-We also need an AnchorEntity, which defines the center of our model in the 3D world.
-After defining these variables, we can create the ModelEntity and place it in the AR world using the AnchorEntity.
-
-\begin{lstlisting}
-    func updateUIView(_ uiView: ARView, context: Context) {
-        uiView.scene.anchors.removeAll()
-        
-        let cylinderMeshResource = MeshResource.generateBox(size: SIMD3(x: 1.2, y: 0.01, z: 0.01), cornerRadius: 0.1)
-        
-        let myMaterial = SimpleMaterial(color: .gray, roughness: 0, isMetallic: true)
-        let radians = 90.0 * Float.pi / 180.0
-            
-        let kozeppont = AnchorEntity(world: SIMD3(x: 0.0, y: 0.0, z: 0.0))
-        let axisXEntity = ModelEntity(mesh: cylinderMeshResource, materials: [myMaterial])
-        
-        let coneXEntity = ModelEntity(mesh: coneMeshResource, materials: [myMaterial])
-        coneXEntity.orientation = simd_quatf(angle: radians, axis: SIMD3(x: 0, y: 0, z: -1))
-        
-        axisXEntity.addChild(coneXEntity)
-        coneXEntity.setPosition(SIMD3(x: 0.6, y: 0.0, z: 0.0), relativeTo: axisXEntity)
-        
-        
-        kozeppont.addChild(axisXEntity)
-        uiView.scene.addAnchor(kozeppont)
-        ...
-    }
-\end{lstlisting}
-
-To be able to move the different elements together, all 3D models are children of the axes. Thus, if the axis moves, the connected elements will also move due to the parent-child relationship. In its current version, MeshResource does not support the generation of cones by default, so I was able to achieve this by using an external library package. After importing the RealityGeometries library, I was able to easily generate cones, which I eventually used to draw axes.
-
-\chapter{Presentation of finished work}
-
-In this section I will present and showcase my finished appliction. I will include screenshots to have a better representation and understanding for the reader.
-The camera function in the application allows you to capture the current state of the graphs, which in this case came in handy for documentation.
-
-
-\begin{figure}[!ht]
-  \centering
-  \includegraphics[scale=0.2]{front.jpeg}
-  % \includegraphics[width=150mm, keepaspectratio]{figures/TeXnicCenter.png}
-  \caption{The main screen of the application.}
-  \label{fig:TexnicCenter}
-\end{figure}
-
-\begin{figure}[!ht]
-  \centering
-  \includegraphics[scale=0.2]{side.jpeg}
-  % \includegraphics[width=150mm, keepaspectratio]{figures/TeXnicCenter.png}
-  \caption{The main screen of the application.}
-  \label{fig:TexnicCenter}
-\end{figure}
-
-\begin{figure}[!ht]
-  \centering
-  \includegraphics[scale=0.2]{top.jpeg}
-  % \includegraphics[width=150mm, keepaspectratio]{figures/TeXnicCenter.png}
-  \caption{The main screen of the application.}
-  \label{fig:TexnicCenter}
-\end{figure}
-
-As the attached images clearly show, the virtual 3D graph can be easily walked around and viewed from different angles, thereby giving users a new comparative perspective. It is possible to move and rotate the entire graph, as well as move the current exchange rate columns to make it easier to compare with other metrics. The move and rotate functions are only available in Spectate mode, for this you have to stop Live mode (or otherwise start Live mode) by pressing the button located in the upper left corner.
-
-Currently, 2 currencies are available in the application, but of course this can be easily expanded at any time in the future. These two are EUR to HUF and USD to HUF. These can be displayed after selection and confirmation from the bottom bar. If the given exchange rate is already placed, it can no longer be added to the graph twice.
-
-\begin{figure}[!ht]
-  \centering
-  \includegraphics[scale=0.2]{selector.jpeg}
-  % \includegraphics[width=150mm, keepaspectratio]{figures/TeXnicCenter.png}
-  \caption{The main screen of the application.}
-  \label{fig:TexnicCenter}
-\end{figure}
-
-\begin{figure}[!ht]
-  \centering
-  \includegraphics[scale=0.2]{megerosites.jpeg}
-  % \includegraphics[width=150mm, keepaspectratio]{figures/TeXnicCenter.png}
-  \caption{The main screen of the application.}
-  \label{fig:TexnicCenter}
-\end{figure}
-
-\begin{figure}[!ht]
-  \centering
-  \includegraphics[scale=0.2]{not_available.jpeg}
-  % \includegraphics[width=150mm, keepaspectratio]{figures/TeXnicCenter.png}
-  \caption{The main screen of the application.}
-  \label{fig:TexnicCenter}
-\end{figure}
-
-
-
-
-
-\chapter{Sources}
-
-Below I list the external links and sources used during the project and the report.
-
-% \bibliography{mybib}
-
-%\section{External Links}
-
-\begin{thebibliography}{9}
-  \bibitem{techtagaws}
-  TechTarget - Amazon Web Services: https://www.techtarget.com/searchaws/definition/Amazon-Web-Services
-
-  \bibitem{lamport94}
-  Leslie Lamport (1994) \emph{\LaTeX: a document preparation system}, Addison
-  Wesley, Massachusetts, 2nd ed.
-\end{thebibliography}
-
-\hyperlink{https://www.techtarget.com/searchaws/definition/Amazon-Web-Services}{TechTarget - Amazon Web Services}
-
-\hyperlink{https://developer.apple.com/augmented-reality/}{Apple - Augmented Reality}
-
-\hyperlink{https://developer.apple.com/documentation/realitykit/}{Apple - RealityKit}
-
-\hyperlink{https://www.kodeco.com/books/apple-augmented-reality-by-tutorials/v1.0/chapters/iii-introduction}{Kodeco - RalityKit tutorials}
-
-\hyperlink{https://developer.apple.com/forums/thread/658300}{Apple Forum - Where to start ARKit}
-
-\hyperlink{https://developer.apple.com/documentation/realitykit/adding-procedural-assets-to-a-scene}{Apple - Adding procedural assets to a scene}
-
-\hyperlink{https://coledennis.medium.com/tutorial-generating-3d-text-with-realitykit-in-a-swiftui-app-fa2a50403012}{Medium - Adding 3D text to scene}
-
-\hyperlink{https://betterprogramming.pub/take-an-arview-snapshot-in-realitykit-93b620cf99b3}{BetterProgramming - Taking AR view snapshot}
-
-\hyperlink{https://www.youtube.com/watch?v=9R_G0EI-UoI}{YouTube - Placing models}
-
-\hyperlink{https://github.com/maxxfrazer/FocusEntity}{GitHub - FocusEntity}
-
-\hyperlink{https://betterprogramming.pub/how-to-add-text-to-an-arview-in-an-ios-application-tutorial-f3f746f4dc1f}{BetterProgramming - Update model entity}
-
-\hyperlink{https://rapidapi.com/apidojo/api/yahoo-finance1}{RapidAPI}
-
-\hyperlink{https://algotrading101.com/learn/yahoo-finance-api-guide/}{Yahoo Financial API Guide}
-
-\hyperlink{https://apilayer.com/marketplace/exchangerates_data-api}{APILayer REST API}
-
-\hyperlink{https://github.com/maxxfrazer/RealityGeometries}{RealityGeometries - Kúpinsta}
-
-\hyperlink{https://www.youtube.com/watch?v=itGRaAryUxA}{YouTube - RealitySchool: Place, Interact with, and Remove AR Objects in RealityKit}
-
-\hyperlink{https://cocoacasts.com/swiftui-fundamentals-what-is-swiftui}{Cocoacast - SwiftUI}
-
-\hyperlink{https://www.hackingwithswift.com/quick-start/swiftui/how-to-use-observedobject-to-manage-state-from-external-objects}{Hacking with Swift - ObservedObject}
-
-\hyperlink{https://developer.mozilla.org/en-US/docs/Glossary/MVC}{Mozilla - MVC}
+When we would like to run the program we should also import the FileReader and ConvolutionalNeuralNetwork classes.
+For running we should type python program.py to the terminal and the program should start running.
+
+\section{cnn.py}
+
+This file contains the fundamental code for the neural network. I used many other libraries for my homework like \emph{numpy}, \emph{tensorflow}, and \emph{sklearn} also.
+
+\subsection{init}
+In the \_\_init\_\_ function I initialize the arrays which I used for traing and spliting. These are the different variables that I used in my class:
+\begin{itemize}
+  \item self.images: contains the raw images
+  \item self.label: contains the labels for the images
+  \item self.img\_train: contains the train set of images
+  \item self.img\_test: contains the test set of images.
+  \item self.label\_train: contains the labels of the train set
+  \item self.label\_test: contains the labels of the test set
+  \item self.model: is a model used from tensorflow.keras.It has five layers, three 2D convolutional layers  and two 2D MaxPooling layers.
+        The first convolutional layer has 32 filters/kernels. Each filter is 3x3 matrix. I choose ReLU as the activation function.
+        The input shape is 128x128, 1 which is set because the given images are this size and they are grey scaled.
+        The MaxPooling layers are used for down-sampling and reducing the spatial dimensions of the input.
+        It uses a 2x2 pooling window/filter. It also helps reducing the chnace of overfitting.It only retains only the most important informaton from it.
+\end{itemize}
+After the Initialization of the model I add a Flatten layer to it.It is used for converting and outputing a 1D array.
+It is necessary before passing to a dense, fully connected layer. The next line adds a layer with 64 units (neurons) and a ReLU activation function.
+A dense layer means that each neuron in this layer is connected to every neuron in the previous layer. The last line in the init function adds another dense layer with 62 units, representing the output layer.
+The activation function used in the output layer is "softmax." Softmax is often used for multi-class classification problems. It converts the raw output scores into probabilities, where each value represents the probability of the input belonging to a particular class.
+The sum of all probabilities for a given input is 1, making it suitable for classification tasks like this task also.
+\subsection{split}
+The split function is used for spliting the images and the labels into traing and testing set, with the test set is 33\% of the input. I also add a random_state seed so it will result alawys the same output.
+
+\section{labeler.py}
+
+\section{filereader.py}
+
+\chapter{Results and parameter optimization}
 
 \end{document}

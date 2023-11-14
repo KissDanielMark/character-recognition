@@ -32,7 +32,7 @@ class ConvolutionalNeuralNetwork:
         self.model.add(layers.Dense(64, activation="relu"))
         self.model.add(
             layers.Dense(62, activation="softmax")
-        )  # 10 classes for digits 0-9
+        )  # 62 classes for digits 0-9, a-z, A-Z
         return
 
     def scheduler(self, epoch, lr):
