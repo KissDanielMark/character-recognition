@@ -59,7 +59,7 @@ class ConvolutionalNeuralNetwork:
 
     def compile(self):
         """Compiling the model"""
-        optimizer = Adam(learning_rate=0.002)  # Adjust the learning rate as needed
+        optimizer = Adam(learning_rate=0.003)  # Adjust the learning rate as needed
         self.model.compile(
             optimizer=optimizer,
             loss="sparse_categorical_crossentropy",
