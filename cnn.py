@@ -4,6 +4,7 @@ import tensorflow as tf
 from tensorflow.keras import layers, models
 from tensorflow.keras.datasets import mnist
 from tensorflow.keras.callbacks import LearningRateScheduler
+from tensorflow.keras.optimizers import Adam
 
 
 class ConvolutionalNeuralNetwork:
@@ -58,8 +59,9 @@ class ConvolutionalNeuralNetwork:
 
     def compile(self):
         """Compiling the model"""
+        optimizer = Adam(learning_rate=0.002)  # Adjust the learning rate as needed
         self.model.compile(
-            optimizer="adam",
+            optimizer=optimizer,
             loss="sparse_categorical_crossentropy",
             metrics=["accuracy"],
         )
