@@ -37,6 +37,7 @@ class ConvolutionalNeuralNetwork:
 
     def scheduler(self, epoch, lr):
         """Learning rate scheduler"""
+        return lr
         if epoch < 5:
             return lr
         else:
