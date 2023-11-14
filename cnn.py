@@ -75,7 +75,7 @@ class ConvolutionalNeuralNetwork:
             self.img_train,
             self.label_train,
             epochs=15,
-            batch_size=64,
+            batch_size=32,
             validation_split=0.2,
             callbacks=[lr_scheduler],
         )

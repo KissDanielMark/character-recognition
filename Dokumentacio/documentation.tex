@@ -71,12 +71,59 @@ A dense layer means that each neuron in this layer is connected to every neuron 
 The activation function used in the output layer is "softmax." Softmax is often used for multi-class classification problems. It converts the raw output scores into probabilities, where each value represents the probability of the input belonging to a particular class.
 The sum of all probabilities for a given input is 1, making it suitable for classification tasks like this task also.
 \subsection{split}
-The split function is used for spliting the images and the labels into traing and testing set, with the test set is 33\% of the input. I also add a random_state seed so it will result alawys the same output.
+The split function is used for spliting the images and the labels into traing and testing set, with the test set is 33\% of the input.
+I also add a random\_state seed so it will result alawys the same output.
+
+\subsection{compile}
+
+The compile function is used for compiling the model. I used the Adam optimizer for the compilation.
+It is an adaptive learning rate optimization algorithm that’s been designed specifically for training deep neural networks.
+
+\subsection{train}
+
+The train function is used for training the model. I used 15 epochs for the training.
+I also added a LearningRateScheduler to the training. It is used for changing the learning rate during the training.
+I used 64 as the batch size. The batch size is a number of samples processed before the model is updated.
+The validation split is set to 0.2. It means that 20\% of the training data is used for validation.
+
+\subsection{evaluate}
+
+The evaluate function is used for evaluating the model. It returns the loss and the accuracy of the model.
+
+\subsection{predict}
+
+The predict function is used for predicting the labels of the test set. It returns the predicted labels.
+It only processes one image and gives a prediction for it. It is used for the output.txt file.
 
 \section{labeler.py}
 
+The labeler.py file is used for labeling the images. It is only a huge dictionary with the labels for the images.
+
 \section{filereader.py}
 
+The filereader.py file is used for reading the images and the labels from the given files.
+\subsection{read\_training\_files}
+It reads the folders and images recursively.
+These functions also used for reading not only the training folders but the test folder as well.
+
+\subsection{create\_train\_set}
+For every image that has been read it is processed by a private function called \_process\_image().
+These processed images are added to the images array and the labels are added to the labels array.
+The \_process\_image() function is used for creating the labels for the images extracted from the filename.
+Also the images are converted to numpy arrays.
+After that the function is normalizing the images.
+
+\section{Tensorflow using GPU}
+
+I used tensorflow-gpu for my homework.
+It is a version of tensorflow that uses the GPU for the calculations. I had an interesting problem with it.When I ran the same code on CPU and GPU I got different results.
+On CPU the model gave a 87\% accuracy, but on GPU it gave a 75\% accuracy.
+\includegraphics[width=\textwidth]{cpuvsgpu}
+I tried to solve this problem but I could not find the solution for it.
+
 \chapter{Results and parameter optimization}
+
+In this chapter I will showcase the results of my homework and the parameter optimization that I have done.
+
 
 \end{document}
