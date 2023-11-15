@@ -477,6 +477,10 @@ INPUT ./images/cpuvsgpu.png
 INPUT ./images/cpuvsgpu.png
 INPUT ./images/cpuvsgpu.png
 INPUT ./images/cpuvsgpu.png
+INPUT ./images/best.png
+INPUT ./images/best.png
+INPUT ./images/best.png
+INPUT ./images/best.png
 INPUT documentation.aux
 INPUT /usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb
 INPUT /usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb

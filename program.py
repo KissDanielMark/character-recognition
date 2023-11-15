@@ -32,9 +32,9 @@ def program():
     cnn.evaluate()
 
     # reader._image_to_array('/Users/kissdanielmark/Documents/01.Iskola/MSc/2/MediaAndTextmining/character-recognition/Train1/Sample001/img001-00001.png')
-    # reader.read_test_files()
-    # reader.create_test_set()
-    # export_to_txt(reader, cnn)
+    reader.read_test_files()
+    reader.create_test_set()
+    export_to_txt(reader, cnn)
 
 
 program()

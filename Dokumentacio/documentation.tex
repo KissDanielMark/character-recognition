@@ -118,7 +118,11 @@ After that the function is normalizing the images.
 I used tensorflow-gpu for my homework.
 It is a version of tensorflow that uses the GPU for the calculations. I had an interesting problem with it.When I ran the same code on CPU and GPU I got different results.
 On CPU the model gave a 87\% accuracy, but on GPU it gave a 75\% accuracy.
-\includegraphics[width=\textwidth]{cpuvsgpu}
+\begin{figure}[h]
+  \caption{CPU vs GPU}
+  \centering
+  \includegraphics[width=\textwidth]{cpuvsgpu}
+\end{figure}
 I tried to solve this problem but I could not find the solution for it.
 
 \chapter{Results and parameter optimization}
@@ -135,5 +139,17 @@ The next I tried adding a LearningRateScheduler to the training. It resulted an 
 I also tried using differnt learning rate. Increasing it to 0,002 resulted in a 83,7\% accuracy. Decreasing it to 0,0005 resulted in a 82,1\% accuracy.
 An other bigger leap was when I adjusted the learning rate with treshold to 3 for the epoch and using a lr * tf.math.exp(-0.5) calculation. It resulted in a 84,2\% accuracy.
 Decreasing the batch size to 32 resulted in a 84,7\% accuracy. I also tried increasing the batch size to 128 but it resulted in only a 82,5\% accuracy.
+
+\begin{figure}[h]
+  \caption{84,7\% accuracy with 32 batch size}
+  \centering
+  \includegraphics[width=\textwidth]{best}
+\end{figure}
+
+\chapter{Conclusion}
+
+In my homework I have created a convolutional neural network for recognizing the characters of the given images.
+I have used tensorflow and keras for the implementation. I have also used numpy and sklearn for the implementation. The  best accuracy that I have achieved was 84,7\%.
+Unfortunately I could not achieve a higher accuracy. I have tried to play with the parameters but I could not find the best combination for the parameters. Maybe with more experience I would be able to achieve a higher accuracy.
 
 \end{document}

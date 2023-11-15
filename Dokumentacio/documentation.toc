@@ -14,4 +14,5 @@
 \contentsline {subsection}{\numberline {2.4.2}create\_train\_set}{6}{subsection.2.4.2}%
 \contentsline {section}{\numberline {2.5}Tensorflow using GPU}{6}{section.2.5}%
 \contentsline {chapter}{\numberline {3}Results and parameter optimization}{7}{chapter.3}%
+\contentsline {chapter}{\numberline {4}Conclusion}{9}{chapter.4}%
 \contentsfinish 
