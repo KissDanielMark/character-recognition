@@ -31,7 +31,7 @@ class ConvolutionalNeuralNetwork:
         self.model.add(layers.Flatten())
         self.model.add(layers.Dense(64, activation="relu"))
         self.model.add(
-            layers.Dense(62, activation="softmax")
+            layers.Dense(63, activation="softmax")
         )  # 62 classes for digits 0-9, a-z, A-Z
         return
 
