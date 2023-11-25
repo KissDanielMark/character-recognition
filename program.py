@@ -5,8 +5,16 @@ from cnn import ConvolutionalNeuralNetwork
 def export_to_txt(reader, cnn):
     """Export the output to a text file"""
     output_lines = ["class;TestImage"]
+    tuple_array = []
     for test_image, test_name in zip(reader.test_set_imgs, reader.test_set_imgname):
         class_label = cnn.predict(test_image)
+        tuple_array.append((class_label, test_name))
+
+    sorted_proba = sorted(
+        tuple_array, key=lambda x: int(x[1].split("Test")[1].split(".png")[0])
+    )
+
+    for class_label, test_name in sorted_proba:
         output_lines.append(f"{class_label};{test_name}")
 
     output_file_path = "output.txt"
@@ -38,3 +46,14 @@ def program():
 
 
 program()
+
+
+def ordering():
+    proba = [("11", "Test4751.png"), ("1", "Test8751.png"), ("169", "Test751.png")]
+    sorted_proba = sorted(
+        proba, key=lambda x: int(x[1].split("Test")[1].split(".png")[0])
+    )
+    print(sorted_proba)
+
+
+# ordering()
